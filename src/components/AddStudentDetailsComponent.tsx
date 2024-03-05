@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { SxProps } from "@mui/system";
 import CircularProgress from "@mui/joy/CircularProgress";
-import { addBookDetailsMockData } from "../mockData/addBookDetails";
+import { addStudentDetailsMockData } from "../mockData/addStudentDetails";
 //import background1 from './bgimage.jpeg'
 //import bgimage from '../assets/background1.png'
 const textFieldStyles: SxProps<Theme> = {
@@ -69,24 +69,24 @@ const content_4: SxProps<Theme> = {
   width: "750px",
 };
 
-export type AddBookDetailsComponentProps = {
-  bookName?: string;
-  authorName?: string;
-  quantity?: number;
-  onBookName?: (bookName: string) => void;
-  onAuthorName?: (authorName: string) => void;
-  onQuantityChange?: (quantity: number) => void;
+export type AddStudentDetailsComponentProps = {
+  rollNo?: number;
+  name?: string;
+  department?: string;
+  onrollNoChange?: (rollNo: number) => void;
+  onNameChange?: (name: string) => void;
+  onDepartmentChange?: (department: string) => void;
   onSubmitClick?: () => void;
   isLoading?: boolean;
   isDetailsAdded?: boolean;
 };
 
-export const AddBookDetailsComponent: React.FC<
-  AddBookDetailsComponentProps
+export const AddStudentDetailsComponent: React.FC<
+  AddStudentDetailsComponentProps
 > = ({}) => {
   return (
     <Box sx={container}>
-       {addBookDetailsMockData.isDetailsAdded ? (
+       {addStudentDetailsMockData.isDetailsAdded ? (
             <Alert variant="filled" severity="success" sx={alertStyles} >
               Book details have sucessfully added
             </Alert>
@@ -97,23 +97,23 @@ export const AddBookDetailsComponent: React.FC<
           )}
       <Box sx={heading}>
      
-        <Typography sx={heading_1}>Add Book Details</Typography>
+        <Typography sx={heading_1}>Add Student Details</Typography>
       </Box>
       <Box sx={subcontainer}>
         <Box sx={content_1}>
           <TextField
             id="outlined-basic"
-            label="Book Name"
+            label="Roll No"
             variant="outlined"
             color="secondary"
             sx={textFieldStyles}
-            defaultValue={addBookDetailsMockData.bookName}
+            defaultValue={addStudentDetailsMockData.rollNo}
           />
         </Box>
         <Box sx={content_1}>
           <TextField
             id="outlined-basic"
-            label="Author Name"
+            label="Name"
             variant="outlined"
             color="secondary"
             sx={textFieldStyles}
@@ -122,7 +122,7 @@ export const AddBookDetailsComponent: React.FC<
         <Box sx={content_1}>
           <TextField
             id="outlined-basic"
-            label="Quantity"
+            label="Department"
             variant="outlined"
             color="secondary"
             sx={textFieldStyles}
@@ -130,7 +130,7 @@ export const AddBookDetailsComponent: React.FC<
         </Box>
         <Box sx={content_4}>
           <Button variant="contained" sx={buttonStyles} color="inherit">
-            {addBookDetailsMockData.isLoading ? (
+            {addStudentDetailsMockData.isLoading ? (
               <CircularProgress size="sm" />
             ) : (
               "submit"
