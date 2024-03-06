@@ -1,8 +1,9 @@
-import { AddStudentDetailsContainer } from './container/AddStudentDetailsContainer';
+import { IssueBookDetailsContainer } from './container/IssueBookDetailsContainer';
+
 
 function App() {
   return (
-    <AddStudentDetailsContainer/>
+    <IssueBookDetailsContainer/>
   );
 }
 

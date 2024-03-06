@@ -14,13 +14,13 @@ import { addBookDetailsMockData } from "../mockData/addBookDetails";
 //import bgimage from '../assets/background1.png'
 const textFieldStyles: SxProps<Theme> = {
   width: "450px",
- };
+};
 const buttonStyles: SxProps<Theme> = {
   width: "200px",
   height: "50px",
 };
 const alertStyles: SxProps<Theme> = {
- marginTop:"10px"
+  marginTop: "10px",
 };
 const heading_1: SxProps<Theme> = {
   fontSize: "40px",
@@ -39,7 +39,7 @@ const container: SxProps<Theme> = {
   minHeight: "98vh",
   width: "100%",
   alignItems: "center",
- // backgroundImage:`url(${background1})`
+  // backgroundImage:`url(${background1})`
 };
 
 const subcontainer: SxProps<Theme> = {
@@ -48,6 +48,7 @@ const subcontainer: SxProps<Theme> = {
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "column",
+  backgroundColor: "yellow",
   padding: "10px",
   height: "400px",
   width: "750px",
@@ -59,6 +60,7 @@ const content_1: SxProps<Theme> = {
   justifyContent: "space-around",
   height: "100px",
   width: "750px",
+  backgroundColor: "",
 };
 const content_4: SxProps<Theme> = {
   display: "flex",
@@ -86,17 +88,16 @@ export const AddBookDetailsComponent: React.FC<
 > = ({}) => {
   return (
     <Box sx={container}>
-       {addBookDetailsMockData.isDetailsAdded ? (
-            <Alert variant="filled" severity="success" sx={alertStyles} >
-              Book details have sucessfully added
-            </Alert>
-          ) : (
-            <Alert variant="filled" severity="error"sx={alertStyles}>
-              Error occured
-            </Alert>
-          )}
+      {addBookDetailsMockData.isDetailsAdded ? (
+        <Alert variant="filled" severity="success" sx={alertStyles}>
+          Book details have sucessfully added
+        </Alert>
+      ) : (
+        <Alert variant="filled" severity="error" sx={alertStyles}>
+          Error occured
+        </Alert>
+      )}
       <Box sx={heading}>
-     
         <Typography sx={heading_1}>Add Book Details</Typography>
       </Box>
       <Box sx={subcontainer}>
@@ -136,7 +137,6 @@ export const AddBookDetailsComponent: React.FC<
               "submit"
             )}
           </Button>
-          
         </Box>
       </Box>
     </Box>
