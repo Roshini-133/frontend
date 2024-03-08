@@ -10,6 +10,7 @@ import {
 import { SxProps } from "@mui/system";
 import CircularProgress from "@mui/joy/CircularProgress";
 import { addStudentDetailsMockData } from "../mockData/addStudentDetails";
+import {Messages} from "../Messages"
 //import background1 from './bgimage.jpeg'
 //import bgimage from '../assets/background1.png'
 const textFieldStyles: SxProps<Theme> = {
@@ -97,7 +98,7 @@ export const AddStudentDetailsComponent: React.FC<
           )}
       <Box sx={heading}>
      
-        <Typography sx={heading_1}>Add Student Details</Typography>
+        <Typography sx={heading_1}>Messages.Add_Student_Details</Typography>
       </Box>
       <Box sx={subcontainer}>
         <Box sx={content_1}>
@@ -133,7 +134,7 @@ export const AddStudentDetailsComponent: React.FC<
             {addStudentDetailsMockData.isLoading ? (
               <CircularProgress size="sm" />
             ) : (
-              "submit"
+              Messages.Submit_Button
             )}
           </Button>
           

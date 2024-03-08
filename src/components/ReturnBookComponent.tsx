@@ -4,7 +4,6 @@ import {
   Theme,
   Typography,
   Button,
-  Alert,
   FormControl,
   InputLabel,
   Select,
@@ -12,7 +11,7 @@ import {
 } from "@mui/material";
 import { SxProps } from "@mui/system";
 import { returnBookMockData } from "../mockData/returnBookMockData";
-
+import {Messages} from "../Messages";
 
 const textFieldStyles: SxProps<Theme> = {
   width: "450px",
@@ -94,12 +93,12 @@ export const ReturnBookComponent: React.FC<
   return (
     <Box sx={container}>
       <Box sx={heading}>
-        <Typography sx={heading_1}>Return Book Details</Typography>
+        <Typography sx={heading_1}>Messages.Return_Book_Details</Typography>
       </Box>
       <Box sx={subcontainer}>
         <Box sx={content_1}>
         <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Roll No</InputLabel>
+            <InputLabel id="demo-simple-select-label">Messages.Roll_No</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -109,7 +108,7 @@ export const ReturnBookComponent: React.FC<
               sx={textFieldStyles}
             >
               <MenuItem value="" disabled>
-                Select the roll no
+                Messages.Select_the_roll_no
               </MenuItem>
               {returnBookMockData.rollNumbersList?.map((rollNo) => (
                 <MenuItem key={rollNo} value={rollNo}>
@@ -121,7 +120,7 @@ export const ReturnBookComponent: React.FC<
         </Box>
         <Box sx={content_1}>
         <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Book Id</InputLabel>
+            <InputLabel id="demo-simple-select-label">Messages.Book_Id</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -131,7 +130,7 @@ export const ReturnBookComponent: React.FC<
               sx={textFieldStyles}
             >
               <MenuItem value="" disabled>
-                Select the book id
+                Messages.Select_the_book_id
               </MenuItem>
               {returnBookMockData.bookIdList?.map((bookId) => (
                 <MenuItem key={bookId} value={bookId}>
@@ -143,7 +142,7 @@ export const ReturnBookComponent: React.FC<
         </Box>
         <Box sx={content_4}>
           <Button variant="contained" sx={buttonStyles} color="inherit">
-            Submit
+            Messages.Submit_Button
           </Button>
           {/* {returnBookMockData.isFineAmount ? (
             <Alert variant="filled" severity="error" sx={alertStyles} >

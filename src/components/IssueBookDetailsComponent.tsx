@@ -15,6 +15,7 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { issueBookDetailsMockData } from "../mockData/issueBookDetails";
+import {Messages} from "../Messages";
 const container: SxProps<Theme> = {
   display: "flex",
   flexDirection: "column",
@@ -101,12 +102,12 @@ export const IssueBookDetailsComponent: React.FC<
   return (
     <Box sx={container}>
       <Box sx={heading}>
-        <Typography sx={heading_1}>Issue book Details</Typography>
+        <Typography sx={heading_1}>Messages.Issue_book_Details</Typography>
       </Box>
       <Box sx={subcontainer}>
         <Box sx={content}>
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Roll No</InputLabel>
+            <InputLabel id="demo-simple-select-label">Messages.Roll_No</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -115,7 +116,7 @@ export const IssueBookDetailsComponent: React.FC<
               onChange={handleChange}
             >
               <MenuItem value="" disabled>
-                Select the roll no
+                Messages.Select_the_roll_no
               </MenuItem>
               {issueBookDetailsMockData.rollNumbersList?.map((rollNo) => (
                 <MenuItem key={rollNo} value={rollNo}>
@@ -136,7 +137,7 @@ export const IssueBookDetailsComponent: React.FC<
               onChange={handleChange}
             >
               <MenuItem value="" disabled>
-                Select the bookid
+                Messages.Select_the_bookid
               </MenuItem>
               {issueBookDetailsMockData.bookIdList?.map((bookId) => (
                 <MenuItem key={bookId} value={bookId}>
@@ -163,7 +164,7 @@ export const IssueBookDetailsComponent: React.FC<
         </Box>
         <Box sx={content_1}>
           <Button variant="contained" sx={buttonStyles}>
-            Submit{" "}
+            Messages.Submit_Button{" "}
           </Button>
         </Box>
       </Box>

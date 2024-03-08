@@ -10,6 +10,7 @@ import {
 import { SxProps } from "@mui/system";
 import CircularProgress from "@mui/joy/CircularProgress";
 import { addBookDetailsMockData } from "../mockData/addBookDetails";
+import {Messages} from "../Messages"
 //import background1 from './bgimage.jpeg'
 //import bgimage from '../assets/background1.png'
 const textFieldStyles: SxProps<Theme> = {
@@ -88,7 +89,7 @@ export const AddBookDetailsComponent: React.FC<
 > = ({}) => {
   return (
     <Box sx={container}>
-      {addBookDetailsMockData.isDetailsAdded ? (
+      {/* {addBookDetailsMockData.isDetailsAdded ? (
         <Alert variant="filled" severity="success" sx={alertStyles}>
           Book details have sucessfully added
         </Alert>
@@ -96,9 +97,9 @@ export const AddBookDetailsComponent: React.FC<
         <Alert variant="filled" severity="error" sx={alertStyles}>
           Error occured
         </Alert>
-      )}
+      )} */}
       <Box sx={heading}>
-        <Typography sx={heading_1}>Add Book Details</Typography>
+        <Typography sx={heading_1}>Messages.Add_Book_Details</Typography>
       </Box>
       <Box sx={subcontainer}>
         <Box sx={content_1}>
@@ -134,7 +135,7 @@ export const AddBookDetailsComponent: React.FC<
             {addBookDetailsMockData.isLoading ? (
               <CircularProgress size="sm" />
             ) : (
-              "submit"
+              Messages.Submit_Button
             )}
           </Button>
         </Box>

@@ -1,9 +1,10 @@
-import { IssueBookDetailsContainer } from './container/IssueBookDetailsContainer';
+import { StudentSectionContainer } from './container/StudentSectionContainer';
+
 
 
 function App() {
   return (
-    <IssueBookDetailsContainer/>
+    <StudentSectionContainer/>
   );
 }
 
