@@ -1,6 +1,6 @@
 import { BookDetailsComponentProps } from "../components/BookSectionComponent";
 
-export const homePageMockData: BookDetailsComponentProps = [
+export const bookDetailsMockData: BookDetailsComponentProps = [
   {
     bookId: 121,
     bookName: "harry potter",

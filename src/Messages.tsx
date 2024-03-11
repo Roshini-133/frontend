@@ -1,8 +1,10 @@
 export const Messages : Record<string, string>={
     Add_Book_Details:"Add Book Details",
     Submit_Button:"Submit",
-
+       
     Add_Student_Details:"Add Student Details",
+    Success_Message:"Book details have sucessfully added",
+    Error_Message:"Error occured",
 
     Issue_book_Details:"Issue book details",
     Roll_No:"Roll No",
@@ -21,5 +23,9 @@ export const Messages : Record<string, string>={
     Book_Name:"Book name",
     Author_Name:"Author name",
     Quantity:"Quantity",
+
+    Add_New_Student:"Add New Student",
+    Name :"Name",
+    Department:"Department"
     
 }

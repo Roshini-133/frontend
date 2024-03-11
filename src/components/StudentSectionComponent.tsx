@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import {studentSectionMockData} from "../mockData/studentSectionMockData";
+import {useNavigate } from 'react-router-dom'
 import {Messages} from "../Messages"
 const textFieldStyles: SxProps<Theme> = {
   width: "250px",
@@ -68,35 +69,41 @@ export type StudentDetailsComponentProps = {
 export const StudentSectionComponent: React.FC<{
  StudentDetails: StudentDetailsComponentProps}
 > = ({StudentDetails}) => {
+  const navigate=useNavigate();
+  const handleAddNewStudent=()=>{
+    navigate('/addNewStudent')
+  }
   return (
+    
+
     <Box sx={container}>
       <AppBar position="static">
         <Toolbar>
           <Button color="inherit">
             <Typography variant="inherit" fontWeight="bold">
-              Book_Section
+              {Messages.Book_Section}
             </Typography>
           </Button>
           <Button color="inherit">
             <Typography variant="inherit" fontWeight="bold">
-              StudentSection
+              {Messages.Student_Section}
             </Typography>
           </Button>
           <Button color="inherit">
             <Typography variant="inherit" fontWeight="bold">
-              IssueBook
+              {Messages.Issue_Book}
             </Typography>
           </Button>
           <Button color="inherit">
             <Typography variant="inherit" fontWeight="bold">
-              ReturnBook
+              {Messages.Return_Book}
             </Typography>
           </Button>
         </Toolbar>
       </AppBar>
       <Box sx={subcontainer}>
-        <Button variant="contained" sx={buttonStyles} color="inherit">
-          Add New Student
+        <Button variant="contained" sx={buttonStyles} color="inherit" onClick={handleAddNewStudent}>
+          {Messages.Add_New_Student}
         </Button>
         <TextField
           id="outlined-basic"
@@ -106,7 +113,7 @@ export const StudentSectionComponent: React.FC<{
           sx={textFieldStyles}
         />
         <Button variant="contained" sx={buttonStyles_1} color="inherit">
-          Filter
+          {Messages.Filter}
         </Button>
       </Box>
       <Box sx={subcontainer_2}>
@@ -114,9 +121,9 @@ export const StudentSectionComponent: React.FC<{
           <Table sx={{ width: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell align="center">Roll No</TableCell>
-                <TableCell align="center">Name</TableCell>
-                <TableCell align="center">Department</TableCell>
+                <TableCell align="center">{Messages.Roll_No}</TableCell>
+                <TableCell align="center">{Messages.Name}</TableCell>
+                <TableCell align="center">{Messages.Department}</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

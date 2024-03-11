@@ -99,7 +99,7 @@ export const AddBookDetailsComponent: React.FC<
         </Alert>
       )} */}
       <Box sx={heading}>
-        <Typography sx={heading_1}>Messages.Add_Book_Details</Typography>
+        <Typography sx={heading_1}>{Messages.Add_Book_Details}</Typography>
       </Box>
       <Box sx={subcontainer}>
         <Box sx={content_1}>

@@ -1,10 +1,10 @@
-import{HomePageComponent} from "../components/BookSectionComponent"
-import { homePageMockData } from "../mockData/bookSectionMockData";
+import{BookDetailsComponent} from "../components/BookSectionComponent"
+import { bookDetailsMockData } from "../mockData/bookSectionMockData";
 
 
 
-export const HomePageContainer:React.FC = () =>{
+export const BookDetailsContainer:React.FC = () =>{
     return(
-       <HomePageComponent BookDetails={homePageMockData} />
+       <BookDetailsComponent BookDetails={bookDetailsMockData} />
     );
     }

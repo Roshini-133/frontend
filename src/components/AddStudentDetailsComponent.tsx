@@ -89,16 +89,16 @@ export const AddStudentDetailsComponent: React.FC<
     <Box sx={container}>
        {addStudentDetailsMockData.isDetailsAdded ? (
             <Alert variant="filled" severity="success" sx={alertStyles} >
-              Book details have sucessfully added
+              {Messages.Success_Message}
             </Alert>
           ) : (
             <Alert variant="filled" severity="error"sx={alertStyles}>
-              Error occured
+              {Messages.Error_Message}
             </Alert>
           )}
       <Box sx={heading}>
      
-        <Typography sx={heading_1}>Messages.Add_Student_Details</Typography>
+        <Typography sx={heading_1}>{Messages.Add_Student_Details}</Typography>
       </Box>
       <Box sx={subcontainer}>
         <Box sx={content_1}>

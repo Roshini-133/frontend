@@ -16,8 +16,9 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import {homePageMockData} from "../mockData/bookSectionMockData";
-import {Messages} from "../Messages"
+import { bookDetailsMockData } from "../mockData/bookSectionMockData";
+import { Messages } from "../Messages";
+import { useNavigate } from "react-router-dom";
 const textFieldStyles: SxProps<Theme> = {
   width: "250px",
 };
@@ -60,44 +61,62 @@ const subcontainer_2: SxProps<Theme> = {
 };
 
 export type BookDetailsComponentProps = {
-  bookId?:number;  
+  bookId?: number;
   bookName?: string;
   authorName?: string;
   quantity?: number;
 }[];
 
-export const HomePageComponent: React.FC<{
- BookDetails: BookDetailsComponentProps}
-> = ({BookDetails}) => {
+export const BookDetailsComponent: React.FC<{
+  BookDetails: BookDetailsComponentProps;
+}> = ({}) => {
+  const navigate = useNavigate();
+  const handleAddNewBook = () => {
+    navigate("/addNewBook");
+  };
+  const handleStudentSection = () => {
+    navigate("/studentSection");
+  };
+  const handleIssueBook = () => {
+    navigate("/issueBook");
+  };
+  const handleReturnBook = () => {
+    navigate("/returnBook");
+  };
   return (
     <Box sx={container}>
       <AppBar position="static">
         <Toolbar>
           <Button color="inherit">
             <Typography variant="inherit" fontWeight="bold">
-              Messages.Book_Section
+              {Messages.Book_Section}
             </Typography>
           </Button>
-          <Button color="inherit">
+          <Button color="inherit" onClick={handleStudentSection}>
             <Typography variant="inherit" fontWeight="bold">
-              Messages.Student_Section
+            {Messages.Student_Section}
             </Typography>
           </Button>
-          <Button color="inherit">
+          <Button color="inherit" onClick={handleIssueBook}>
             <Typography variant="inherit" fontWeight="bold">
-              Messages.Issue_Book
+            {Messages.Issue_Book}
             </Typography>
           </Button>
-          <Button color="inherit">
+          <Button color="inherit" onClick={handleReturnBook}>
             <Typography variant="inherit" fontWeight="bold">
-            Messages.Return_Book
+            {Messages.Return_Book}
             </Typography>
           </Button>
         </Toolbar>
       </AppBar>
       <Box sx={subcontainer}>
-        <Button variant="contained" sx={buttonStyles} color="inherit">
-        Messages.Add_New_Book
+        <Button
+          variant="contained"
+          sx={buttonStyles}
+          color="inherit"
+          onClick={handleAddNewBook}
+        >
+          {Messages.Add_New_Book}
         </Button>
         <TextField
           id="outlined-basic"
@@ -107,7 +126,7 @@ export const HomePageComponent: React.FC<{
           sx={textFieldStyles}
         />
         <Button variant="contained" sx={buttonStyles_1} color="inherit">
-        Messages.Filter
+        {Messages.Filter}
         </Button>
       </Box>
       <Box sx={subcontainer_2}>
@@ -115,22 +134,22 @@ export const HomePageComponent: React.FC<{
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Messages.Book_Id</TableCell>
-                <TableCell>Messages.Book_Name</TableCell>
-                <TableCell>Messages.Author_Name</TableCell>
-                <TableCell>Messages.Quantity</TableCell>
+                <TableCell>{Messages.Book_Id}</TableCell>
+                <TableCell>{Messages.Book_Name}</TableCell>
+                <TableCell>{Messages.Author_Name}</TableCell>
+                <TableCell>{Messages.Quantity}</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-                {homePageMockData.map((bookDetails)=>(    
-              <TableRow
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell align="left">{bookDetails.bookId}</TableCell>
-                <TableCell align="left">{bookDetails.bookName}</TableCell>
-                <TableCell align="left">{bookDetails.authorName}</TableCell>
-                <TableCell align="left">{bookDetails.quantity}</TableCell>
-              </TableRow>
+              {bookDetailsMockData.map((bookDetails) => (
+                <TableRow
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell align="left">{bookDetails.bookId}</TableCell>
+                  <TableCell align="left">{bookDetails.bookName}</TableCell>
+                  <TableCell align="left">{bookDetails.authorName}</TableCell>
+                  <TableCell align="left">{bookDetails.quantity}</TableCell>
+                </TableRow>
               ))}
             </TableBody>
           </Table>
