@@ -1,31 +1,34 @@
-export const Messages : Record<string, string>={
-    Add_Book_Details:"Add Book Details",
-    Submit_Button:"Submit",
+export const messages : Record<string, string>={
+    add_book_details:"Add Book Details",
+    submit_button:"Submit",
        
-    Add_Student_Details:"Add Student Details",
-    Success_Message:"Book details have sucessfully added",
-    Error_Message:"Error occured",
+    add_student_details:"Add Student Details",
+    success_message:"Book details have sucessfully added",
+    error_message:"Error occured",
 
-    Issue_book_Details:"Issue book details",
-    Roll_No:"Roll No",
-    Book_Id:"Book Id",
-    Select_the_roll_no:"Select the roll no",
-    Select_the_bookid:"Select the bookid",
+    issue_book_details:"Issue book details",
+    roll_no:"Roll No",
+    book_id:"Book Id",
+    select_the_roll_no:"Select the roll no",
+    select_the_bookid:"Select the bookid",
 
-    Return_Book_Details:"Return Book Details",
+    return_book_details:"Return Book Details",
 
-    Book_Section:"Book Section",
-    Student_Section:"Student Section",
-    Issue_Book:"Issue Book",
-    Return_Book:"Return Book",
-    Add_New_Book:"Add New Book",
-    Filter:"Filter",
-    Book_Name:"Book name",
-    Author_Name:"Author name",
-    Quantity:"Quantity",
+    book_section:"Book Section",
+    student_section:"Student Section",
+    issue_book:"Issue Book",
+    return_book:"Return Book",
+    add_new_book:"Add New Book",
+    filter:"Filter",
+    book_name:"Book name",
+    author_name:"Author name",
+    quantity:"Quantity",
 
-    Add_New_Student:"Add New Student",
-    Name :"Name",
-    Department:"Department"
+    add_new_student:"Add New Student",
+    name :"Name",
+    department:"Department",
+
+    payable_fine:"You have fine",
+    no_fine:"You don't have fine",
     
 }

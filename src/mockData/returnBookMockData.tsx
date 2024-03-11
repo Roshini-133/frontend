@@ -3,8 +3,8 @@ import {ReturnBookComponentProps} from "../components/ReturnBookComponent"
 
 export const returnBookMockData :ReturnBookComponentProps={
     isFineAmount :true,
-    rollNo: 121,
-    bookId:112,
+    rollNo: 101,
+    bookId:201,
     onRollNoChange:() =>{},
     onBookIdChange:()=>{},
     onSubmitClick:()=>{},

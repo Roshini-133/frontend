@@ -5,24 +5,21 @@ import {
   Theme,
   Typography,
   Button,
-  Alert,
 } from "@mui/material";
 import { SxProps } from "@mui/system";
 import CircularProgress from "@mui/joy/CircularProgress";
-import { addBookDetailsMockData } from "../mockData/addBookDetails";
-import {Messages} from "../Messages"
-//import background1 from './bgimage.jpeg'
-//import bgimage from '../assets/background1.png'
+import {messages} from "../Messages"
 const textFieldStyles: SxProps<Theme> = {
   width: "450px",
+};
+const circularProgressStyles: SxProps<Theme> = {
+  size : "sm",
 };
 const buttonStyles: SxProps<Theme> = {
   width: "200px",
   height: "50px",
 };
-const alertStyles: SxProps<Theme> = {
-  marginTop: "10px",
-};
+
 const heading_1: SxProps<Theme> = {
   fontSize: "40px",
   marginTop: "80px",
@@ -40,7 +37,6 @@ const container: SxProps<Theme> = {
   minHeight: "98vh",
   width: "100%",
   alignItems: "center",
-  // backgroundImage:`url(${background1})`
 };
 
 const subcontainer: SxProps<Theme> = {
@@ -73,69 +69,59 @@ const content_4: SxProps<Theme> = {
 };
 
 export type AddBookDetailsComponentProps = {
-  bookName?: string;
-  authorName?: string;
-  quantity?: number;
-  onBookName?: (bookName: string) => void;
-  onAuthorName?: (authorName: string) => void;
-  onQuantityChange?: (quantity: number) => void;
-  onSubmitClick?: () => void;
-  isLoading?: boolean;
-  isDetailsAdded?: boolean;
+  bookName: string;
+  authorName: string;
+  quantity: number;
+  isLoading: boolean;
+  isDetailsAdded: boolean;
+  onBookName: (bookName: string) => void;
+  onAuthorName: (authorName: string) => void;
+  onQuantityChange: (quantity: number) => void;
+  onSubmitClick: () => void;
 };
 
 export const AddBookDetailsComponent: React.FC<
   AddBookDetailsComponentProps
-> = ({}) => {
+> = ({bookName,authorName,quantity,isLoading}) => {
   return (
     <Box sx={container}>
-      {/* {addBookDetailsMockData.isDetailsAdded ? (
-        <Alert variant="filled" severity="success" sx={alertStyles}>
-          Book details have sucessfully added
-        </Alert>
-      ) : (
-        <Alert variant="filled" severity="error" sx={alertStyles}>
-          Error occured
-        </Alert>
-      )} */}
       <Box sx={heading}>
-        <Typography sx={heading_1}>{Messages.Add_Book_Details}</Typography>
+        <Typography sx={heading_1}>{messages.add_book_details}</Typography>
       </Box>
       <Box sx={subcontainer}>
         <Box sx={content_1}>
           <TextField
-            id="outlined-basic"
             label="Book Name"
             variant="outlined"
             color="secondary"
             sx={textFieldStyles}
-            defaultValue={addBookDetailsMockData.bookName}
+            defaultValue={bookName}
           />
         </Box>
         <Box sx={content_1}>
           <TextField
-            id="outlined-basic"
             label="Author Name"
             variant="outlined"
             color="secondary"
             sx={textFieldStyles}
+            defaultValue={authorName}
           />
         </Box>
         <Box sx={content_1}>
           <TextField
-            id="outlined-basic"
             label="Quantity"
             variant="outlined"
             color="secondary"
             sx={textFieldStyles}
+            defaultValue={quantity}
           />
         </Box>
         <Box sx={content_4}>
           <Button variant="contained" sx={buttonStyles} color="inherit">
-            {addBookDetailsMockData.isLoading ? (
-              <CircularProgress size="sm" />
+            {isLoading ? (
+              <CircularProgress sx={circularProgressStyles} />
             ) : (
-              Messages.Submit_Button
+              messages.submit_button
             )}
           </Button>
         </Box>

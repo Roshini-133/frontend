@@ -9,13 +9,14 @@ import {
 } from "@mui/material";
 import { SxProps } from "@mui/system";
 import CircularProgress from "@mui/joy/CircularProgress";
-import { addStudentDetailsMockData } from "../mockData/addStudentDetails";
-import {Messages} from "../Messages"
-//import background1 from './bgimage.jpeg'
-//import bgimage from '../assets/background1.png'
+import {messages} from "../Messages"
+
 const textFieldStyles: SxProps<Theme> = {
   width: "450px",
  };
+ const circularProgressStyles: SxProps<Theme> = {
+  size : "sm",
+};
 const buttonStyles: SxProps<Theme> = {
   width: "200px",
   height: "50px",
@@ -40,7 +41,6 @@ const container: SxProps<Theme> = {
   minHeight: "98vh",
   width: "100%",
   alignItems: "center",
- // backgroundImage:`url(${background1})`
 };
 
 const subcontainer: SxProps<Theme> = {
@@ -71,70 +71,69 @@ const content_4: SxProps<Theme> = {
 };
 
 export type AddStudentDetailsComponentProps = {
-  rollNo?: number;
-  name?: string;
-  department?: string;
-  onrollNoChange?: (rollNo: number) => void;
-  onNameChange?: (name: string) => void;
-  onDepartmentChange?: (department: string) => void;
-  onSubmitClick?: () => void;
-  isLoading?: boolean;
-  isDetailsAdded?: boolean;
+  rollNo: number;
+  name: string;
+  department: string;
+  isLoading: boolean;
+  isDetailsAdded: boolean;
+  onrollNoChange: (rollNo: number) => void;
+  onNameChange: (name: string) => void;
+  onDepartmentChange: (department: string) => void;
+  onSubmitClick: () => void;
 };
 
 export const AddStudentDetailsComponent: React.FC<
   AddStudentDetailsComponentProps
-> = ({}) => {
+> = ({rollNo,name,department,isDetailsAdded,isLoading}) => {
   return (
     <Box sx={container}>
-       {addStudentDetailsMockData.isDetailsAdded ? (
+       {isDetailsAdded ? (
             <Alert variant="filled" severity="success" sx={alertStyles} >
-              {Messages.Success_Message}
+              {messages.success_message}
             </Alert>
           ) : (
             <Alert variant="filled" severity="error"sx={alertStyles}>
-              {Messages.Error_Message}
+              {messages.error_message}
             </Alert>
           )}
       <Box sx={heading}>
      
-        <Typography sx={heading_1}>{Messages.Add_Student_Details}</Typography>
+        <Typography sx={heading_1}>{messages.add_student_details}</Typography>
       </Box>
       <Box sx={subcontainer}>
         <Box sx={content_1}>
           <TextField
-            id="outlined-basic"
             label="Roll No"
             variant="outlined"
             color="secondary"
             sx={textFieldStyles}
-            defaultValue={addStudentDetailsMockData.rollNo}
+            defaultValue={rollNo}
           />
         </Box>
         <Box sx={content_1}>
           <TextField
-            id="outlined-basic"
             label="Name"
             variant="outlined"
             color="secondary"
             sx={textFieldStyles}
+            defaultValue={name}
           />
         </Box>
         <Box sx={content_1}>
           <TextField
-            id="outlined-basic"
             label="Department"
             variant="outlined"
             color="secondary"
             sx={textFieldStyles}
+            defaultValue={department}
           />
         </Box>
         <Box sx={content_4}>
           <Button variant="contained" sx={buttonStyles} color="inherit">
-            {addStudentDetailsMockData.isLoading ? (
-              <CircularProgress size="sm" />
+            {isLoading ? (
+              <CircularProgress sx={circularProgressStyles} />
             ) : (
-              Messages.Submit_Button
+              messages.submit_button
             )}
           </Button>
           

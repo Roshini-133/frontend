@@ -4,10 +4,10 @@ import {IssueBookDetailsComponentProps} from "../components/IssueBookDetailsComp
 export const issueBookDetailsMockData :IssueBookDetailsComponentProps={
     rollNo: 121,
     bookId:112,
-   // issueDate:12/03/2024,
+   issueDate:new Date(2024,2,15),
     rentalDays:4,
     onRollNoChange:() =>{},
-   // onBookIdChange:()=>{},
+    onbookIdChange:()=>{},
     onIssueDateChange:()=>{},
     onRentalDaysChange:()=>{},
     onSubmitClick:()=>{},

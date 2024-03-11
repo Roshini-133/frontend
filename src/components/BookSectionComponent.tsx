@@ -1,6 +1,5 @@
 import { SxProps } from "@mui/system";
 import {
-  AppBar,
   Box,
   Button,
   Paper,
@@ -12,16 +11,18 @@ import {
   TableRow,
   TextField,
   Theme,
-  Toolbar,
-  Typography,
 } from "@mui/material";
 import React from "react";
-import { bookDetailsMockData } from "../mockData/bookSectionMockData";
-import { Messages } from "../Messages";
-import { useNavigate } from "react-router-dom";
+import { messages } from "../Messages";
+import { AppBarComponent } from "./AppBarComponent";
 const textFieldStyles: SxProps<Theme> = {
   width: "250px",
 };
+const tableStyles: SxProps<Theme> = {
+  "&:last-child td, &:last-child th": { border: 0 },
+  minWidth: 650,
+};
+
 const buttonStyles: SxProps<Theme> = {
   width: "150px",
   height: "50px",
@@ -44,7 +45,6 @@ const subcontainer: SxProps<Theme> = {
   marginTop: "80px",
   flexDirection: "row",
   justifyContent: "space-around",
-  //backgroundColor: "yellow",
   padding: "10px",
   height: "100px",
   width: "750px",
@@ -65,50 +65,27 @@ export type BookDetailsComponentProps = {
   bookName?: string;
   authorName?: string;
   quantity?: number;
-}[];
+};
 
-export const BookDetailsComponent: React.FC<{
-  BookDetails: BookDetailsComponentProps;
-}> = ({}) => {
-  const navigate = useNavigate();
-  const handleAddNewBook = () => {
-    navigate("/addNewBook");
-  };
-  const handleStudentSection = () => {
-    navigate("/studentSection");
-  };
-  const handleIssueBook = () => {
-    navigate("/issueBook");
-  };
-  const handleReturnBook = () => {
-    navigate("/returnBook");
-  };
+export type BookDetailsProps = {
+  bookDetails: BookDetailsComponentProps[];
+  handleAddNewBook: () => void;
+  handleStudentSection :()=>void;
+  handleIssueBook:()=>void;
+  handleReturnBook:() =>void;
+  handleBookSection:()=>void;
+};
+
+export const BookDetailsComponent: React.FC<BookDetailsProps> = ({bookDetails,
+   handleAddNewBook,handleStudentSection ,handleIssueBook,handleBookSection,
+  handleReturnBook}) => {
   return (
     <Box sx={container}>
-      <AppBar position="static">
-        <Toolbar>
-          <Button color="inherit">
-            <Typography variant="inherit" fontWeight="bold">
-              {Messages.Book_Section}
-            </Typography>
-          </Button>
-          <Button color="inherit" onClick={handleStudentSection}>
-            <Typography variant="inherit" fontWeight="bold">
-            {Messages.Student_Section}
-            </Typography>
-          </Button>
-          <Button color="inherit" onClick={handleIssueBook}>
-            <Typography variant="inherit" fontWeight="bold">
-            {Messages.Issue_Book}
-            </Typography>
-          </Button>
-          <Button color="inherit" onClick={handleReturnBook}>
-            <Typography variant="inherit" fontWeight="bold">
-            {Messages.Return_Book}
-            </Typography>
-          </Button>
-        </Toolbar>
-      </AppBar>
+      <AppBarComponent  handleStudentSection ={handleStudentSection} 
+                        handleIssueBook={handleIssueBook}
+                        handleReturnBook={handleReturnBook}
+                        handleBookSection={handleBookSection}/>
+      
       <Box sx={subcontainer}>
         <Button
           variant="contained"
@@ -116,39 +93,36 @@ export const BookDetailsComponent: React.FC<{
           color="inherit"
           onClick={handleAddNewBook}
         >
-          {Messages.Add_New_Book}
+          {messages.add_new_book}
         </Button>
         <TextField
-          id="outlined-basic"
           label="Type here to search"
           variant="outlined"
           color="secondary"
           sx={textFieldStyles}
         />
         <Button variant="contained" sx={buttonStyles_1} color="inherit">
-        {Messages.Filter}
+          {messages.filter}
         </Button>
       </Box>
       <Box sx={subcontainer_2}>
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Table sx={tableStyles} >
             <TableHead>
               <TableRow>
-                <TableCell>{Messages.Book_Id}</TableCell>
-                <TableCell>{Messages.Book_Name}</TableCell>
-                <TableCell>{Messages.Author_Name}</TableCell>
-                <TableCell>{Messages.Quantity}</TableCell>
+                <TableCell>{messages.book_id}</TableCell>
+                <TableCell>{messages.book_name}</TableCell>
+                <TableCell>{messages.author_name}</TableCell>
+                <TableCell>{messages.quantity}</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {bookDetailsMockData.map((bookDetails) => (
-                <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell align="left">{bookDetails.bookId}</TableCell>
-                  <TableCell align="left">{bookDetails.bookName}</TableCell>
-                  <TableCell align="left">{bookDetails.authorName}</TableCell>
-                  <TableCell align="left">{bookDetails.quantity}</TableCell>
+              {bookDetails.map((bookDetail) => (
+                <TableRow sx={tableStyles}>
+                  <TableCell align="left">{bookDetail.bookId}</TableCell>
+                  <TableCell align="left">{bookDetail.bookName}</TableCell>
+                  <TableCell align="left">{bookDetail.authorName}</TableCell>
+                  <TableCell align="left">{bookDetail.quantity}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

@@ -2,11 +2,12 @@ import {AddBookDetailsComponentProps} from "../components/AddBookDetailsComponen
 
 
 export const addBookDetailsMockData :AddBookDetailsComponentProps={
-    isLoading :false,
-    isDetailsAdded:false,
+    
     bookName: "harry potter",
     authorName: "John Doe",
     quantity: 10,
+    isLoading :false,
+    isDetailsAdded:false,
     onBookName:() =>{},
     onAuthorName:()=>{},
     onQuantityChange:()=>{},

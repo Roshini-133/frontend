@@ -1,6 +1,5 @@
 import { SxProps } from "@mui/system";
 import {
-  AppBar,
   Box,
   Button,
   Paper,
@@ -12,15 +11,16 @@ import {
   TableRow,
   TextField,
   Theme,
-  Toolbar,
-  Typography,
 } from "@mui/material";
 import React from "react";
-import {studentSectionMockData} from "../mockData/studentSectionMockData";
-import {useNavigate } from 'react-router-dom'
-import {Messages} from "../Messages"
+import {messages} from "../Messages"
+import { AppBarComponent } from "./AppBarComponent";
 const textFieldStyles: SxProps<Theme> = {
   width: "250px",
+};
+const tableStyles: SxProps<Theme> = {
+  "&:last-child td, &:last-child th": { border: 0 },
+  minWidth: 650,
 };
 const buttonStyles: SxProps<Theme> = {
   width: "150px",
@@ -44,7 +44,6 @@ const subcontainer: SxProps<Theme> = {
   marginTop: "80px",
   flexDirection: "row",
   justifyContent: "space-around",
- // backgroundColor: "yellow",
   padding: "10px",
   height: "100px",
   width: "750px",
@@ -54,82 +53,60 @@ const subcontainer_2: SxProps<Theme> = {
   marginTop: "50px",
   flexDirection: "row",
   justifyContent: "space-around",
- // backgroundColor: "grey",
   padding: "10px",
   height: "250px",
   minWidth: "500px",
 };
 
 export type StudentDetailsComponentProps = {
-  rollNo?:number;  
-  name?: string;
-  department?: string;
+  rollNo:number;  
+  name: string;
+  department: string;
+  
 }[];
-
-export const StudentSectionComponent: React.FC<{
- StudentDetails: StudentDetailsComponentProps}
-> = ({StudentDetails}) => {
-  const navigate=useNavigate();
-  const handleAddNewStudent=()=>{
-    navigate('/addNewStudent')
-  }
+export type StudentDetailsProps ={
+  StudentDetails: StudentDetailsComponentProps
+  handleBookSection :()=>void;
+  handleIssueBook:()=>void;
+  handleReturnBook:() =>void;
+  handleAddNewStudent:() => void;
+  handleStudentSection:() =>void;
+}
+export const StudentSectionComponent: React.FC<StudentDetailsProps
+> = ({StudentDetails,handleAddNewStudent,handleIssueBook,handleReturnBook,handleBookSection,handleStudentSection}) => {
   return (
-    
-
     <Box sx={container}>
-      <AppBar position="static">
-        <Toolbar>
-          <Button color="inherit">
-            <Typography variant="inherit" fontWeight="bold">
-              {Messages.Book_Section}
-            </Typography>
-          </Button>
-          <Button color="inherit">
-            <Typography variant="inherit" fontWeight="bold">
-              {Messages.Student_Section}
-            </Typography>
-          </Button>
-          <Button color="inherit">
-            <Typography variant="inherit" fontWeight="bold">
-              {Messages.Issue_Book}
-            </Typography>
-          </Button>
-          <Button color="inherit">
-            <Typography variant="inherit" fontWeight="bold">
-              {Messages.Return_Book}
-            </Typography>
-          </Button>
-        </Toolbar>
-      </AppBar>
+      <AppBarComponent handleReturnBook={handleReturnBook}
+      handleIssueBook={handleIssueBook}  
+       handleBookSection={handleBookSection} handleStudentSection={handleStudentSection}/>
       <Box sx={subcontainer}>
         <Button variant="contained" sx={buttonStyles} color="inherit" onClick={handleAddNewStudent}>
-          {Messages.Add_New_Student}
+          {messages.add_new_student}
         </Button>
         <TextField
-          id="outlined-basic"
           label="Type here to search"
           variant="outlined"
           color="secondary"
           sx={textFieldStyles}
         />
         <Button variant="contained" sx={buttonStyles_1} color="inherit">
-          {Messages.Filter}
+          {messages.filter}
         </Button>
       </Box>
       <Box sx={subcontainer_2}>
         <TableContainer component={Paper}>
-          <Table sx={{ width: 650 }} aria-label="simple table">
+          <Table sx={tableStyles} >
             <TableHead>
               <TableRow>
-                <TableCell align="center">{Messages.Roll_No}</TableCell>
-                <TableCell align="center">{Messages.Name}</TableCell>
-                <TableCell align="center">{Messages.Department}</TableCell>
+                <TableCell align="center">{messages.roll_no}</TableCell>
+                <TableCell align="center">{messages.name}</TableCell>
+                <TableCell align="center">{messages.department}</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-                {studentSectionMockData.map((studentDetails)=>(    
+                {StudentDetails.map((studentDetails)=>(    
               <TableRow
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                sx={tableStyles}
               >
                 <TableCell align="center">{studentDetails.rollNo}</TableCell>
                 <TableCell align="center">{studentDetails.name}</TableCell>

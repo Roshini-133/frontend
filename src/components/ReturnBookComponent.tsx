@@ -8,20 +8,21 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Alert,
 } from "@mui/material";
 import { SxProps } from "@mui/system";
-import { returnBookMockData } from "../mockData/returnBookMockData";
-import {Messages} from "../Messages";
+import { messages } from "../Messages";
+import { AppBarComponent } from "./AppBarComponent";
 
 const textFieldStyles: SxProps<Theme> = {
   width: "450px",
- };
+};
 const buttonStyles: SxProps<Theme> = {
   width: "200px",
   height: "50px",
 };
 const alertStyles: SxProps<Theme> = {
- marginTop:"10px"
+  marginTop: "10px",
 };
 const heading_1: SxProps<Theme> = {
   fontSize: "40px",
@@ -40,7 +41,6 @@ const container: SxProps<Theme> = {
   minHeight: "98vh",
   width: "100%",
   alignItems: "center",
- // backgroundImage:`url(${background1})`
 };
 
 const subcontainer: SxProps<Theme> = {
@@ -52,7 +52,6 @@ const subcontainer: SxProps<Theme> = {
   padding: "10px",
   height: "300px",
   width: "750px",
-
 };
 const content_1: SxProps<Theme> = {
   display: "flex",
@@ -61,7 +60,6 @@ const content_1: SxProps<Theme> = {
   justifyContent: "center",
   height: "100px",
   width: "450px",
-
 };
 const content_4: SxProps<Theme> = {
   display: "flex",
@@ -73,44 +71,55 @@ const content_4: SxProps<Theme> = {
 };
 
 export type ReturnBookComponentProps = {
-    rollNo?: number;
-    bookId?: number;
-    isFineAmount?:boolean;
-    rollNumbersList?: number[];
-    bookIdList?: number[];
-    onRollNoChange?: (rollNo: number) => void;
-    onBookIdChange?: (bookId: number) => void;
-    onSubmitClick?: () => void;
-  };
-  
+  rollNo: number;
+  bookId: number;
+  isFineAmount: boolean;
+  rollNumbersList: number[];
+  bookIdList: number[];
+  onRollNoChange: (rollNo: number) => void;
+  onBookIdChange: (bookId: number) => void;
+  onSubmitClick: () => void;
+};
+type ReturnBookProps = {
+  returnBook: ReturnBookComponentProps;
+  handleStudentSection: () => void;
+  handleIssueBook: () => void;
+  handleReturnBook: () => void;
+  handleBookSection: () => void;
+};
 
-export const ReturnBookComponent: React.FC<
-  ReturnBookComponentProps
-> = ({}) => {
-    function handleChange(): void {
-    }
-
+export const ReturnBookComponent: React.FC<ReturnBookProps> = ({
+  returnBook,
+  handleBookSection,
+  handleIssueBook,
+  handleReturnBook,
+  handleStudentSection,
+}) => {
   return (
     <Box sx={container}>
+      <AppBarComponent
+        handleStudentSection={handleStudentSection}
+        handleIssueBook={handleIssueBook}
+        handleReturnBook={handleReturnBook}
+        handleBookSection={handleBookSection}
+      />
+
       <Box sx={heading}>
-        <Typography sx={heading_1}>{Messages.Return_Book_Details}</Typography>
+        <Typography sx={heading_1}>{messages.return_book_details}</Typography>
       </Box>
       <Box sx={subcontainer}>
         <Box sx={content_1}>
-        <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">{Messages.Roll_No}</InputLabel>
+          <FormControl fullWidth>
+            <InputLabel>{messages.roll_no}</InputLabel>
             <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={""}
+              value={returnBook.rollNo}
               label="Roll No"
-              onChange={handleChange}
               sx={textFieldStyles}
             >
-              <MenuItem value="" disabled>
-                {Messages.Select_the_roll_no}
+              <MenuItem value={returnBook.rollNo} disabled>
+                {messages.select_the_roll_no}
               </MenuItem>
-              {returnBookMockData.rollNumbersList?.map((rollNo) => (
+              {returnBook.rollNumbersList.map((rollNo) => (
                 <MenuItem key={rollNo} value={rollNo}>
                   {rollNo}
                 </MenuItem>
@@ -119,20 +128,17 @@ export const ReturnBookComponent: React.FC<
           </FormControl>
         </Box>
         <Box sx={content_1}>
-        <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">{Messages.Book_Id}</InputLabel>
+          <FormControl fullWidth>
+            <InputLabel>{messages.book_id}</InputLabel>
             <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={""}
+              value={returnBook.bookId}
               label="Book Id"
-              onChange={handleChange}
               sx={textFieldStyles}
             >
               <MenuItem value="" disabled>
-               { Messages.Select_the_book_id}
+                {messages.select_the_book_id}
               </MenuItem>
-              {returnBookMockData.bookIdList?.map((bookId) => (
+              {returnBook.bookIdList.map((bookId) => (
                 <MenuItem key={bookId} value={bookId}>
                   {bookId}
                 </MenuItem>
@@ -142,17 +148,17 @@ export const ReturnBookComponent: React.FC<
         </Box>
         <Box sx={content_4}>
           <Button variant="contained" sx={buttonStyles} color="inherit">
-            {Messages.Submit_Button}
+            {messages.submit_button}
           </Button>
-          {/* {returnBookMockData.isFineAmount ? (
-            <Alert variant="filled" severity="error" sx={alertStyles} >
-                You have fine
+          {returnBook.isFineAmount ? (
+            <Alert variant="filled" severity="error" sx={alertStyles}>
+              {messages.payable_fine}
             </Alert>
           ) : (
-            <Alert variant="filled" severity="success"sx={alertStyles}>
-                You don't have fine
+            <Alert variant="filled" severity="success" sx={alertStyles}>
+              {messages.no_fine}
             </Alert>
-          )} */}
+          )}
         </Box>
       </Box>
     </Box>
